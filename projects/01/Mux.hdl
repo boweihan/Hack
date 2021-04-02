@@ -34,4 +34,3 @@ CHIP Mux {
     Or(a=out1, b=eq3out, out=out2);
     Or(a=out2, b=eq4out, out=out);
 }
-
