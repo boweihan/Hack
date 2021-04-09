@@ -63,5 +63,13 @@ CHIP ALU {
 
         // negate the out
         Not16(in=computed, out=negated);
-        Mux16(a=computed, b=negated, sel=no, out=out);
+        Mux16(a=computed, b=negated, sel=no, out=out, out[15]=ng, out[0..7]=out1, out[8..15]=out2);
+
+        // zr - check if every bit is zero
+        Or8Way(in=out1, out=zr1);
+        Or8Way(in=out2, out=zr2);
+        Or(a=zr1, b=zr2, out=zr3);
+        Not(in=zr3, out=zr);
+
+        
 }
